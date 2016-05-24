@@ -16,7 +16,7 @@ public class RocketHub extends Hub {
 	}
 
 	@Override
-	protected void messageReceived(int ClientID, Object message) {
+	protected void messageReceived(int ClientID, Object message, int GivenCreditScore) {
 		System.out.println("Message Received by Hub");
 		
 		if (message instanceof LoanRequest) {
@@ -25,6 +25,12 @@ public class RocketHub extends Hub {
 			LoanRequest lq = (LoanRequest) message;
 			
 			//	TODO - RocketHub.messageReceived
+			double rte = RateBLL.getRate(GivenCreditScore)			
+			double pmt = RateBLL.getPayment(rte, n, p, f, t);
+			lq.setdRate(rte);
+			//try 
+			//catch
+			lq.setdPayment(pmt);
 
 			//	You will have to:
 			//	Determine the rate with the given credit score (call RateBLL.getRate)

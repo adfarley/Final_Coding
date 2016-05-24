@@ -1,17 +1,48 @@
 package rocket.app.view;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import eNums.eAction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import rocket.app.MainApp;
 import rocketCode.Action;
 import rocketData.LoanRequest;
 
-public class MortgageController {
+public class MortgageController implements Initializable {
 
 	private MainApp mainApp;
 	
 	//	TODO - RocketClient.RocketMainController
+	@FXML
+	private TextField txtCreditScore;
+	@FXML
+	private TextField txtExpenses;
+	@FXML
+	private TextField txtIncome;
+	@FXML
+	private TextField txtHouseCost;
+	@FXML
+	private ComboBox cmbTerm;
+	@FXML
+	private Label lblMortgagePayment;
+	@FXML
+	private Label lblIncome;
+	@FXML
+	private Label lblExpenses;
+	@FXML
+	private Label lblCreditScore;
+	@FXML
+	private Label lblHouseCost;
+	@FXML
+	private Label lblTerm;
+	
+	
 	
 	//	Create private instance variables for:
 	//		TextBox  - 	txtIncome
@@ -42,6 +73,11 @@ public class MortgageController {
 		//			set the loan request details...  rate, term, amount, credit score, downpayment
 		//			I've created you an instance of lq...  execute the setters in lq
 
+		lq.setdRate(dRate);
+		lq.setiTerm(Double.parseDouble(cmbTerm));
+		lq.setdAmount(Double.parseDouble(txtHouseCost));
+		lq.setiCreditScore(Double.parseDouble(txtCreditScore));
+		lq.setiDownPayment(iDownPayment);
 		a.setLoanRequest(lq);
 		
 		//	send lq as a message to RocketHub		
@@ -55,6 +91,13 @@ public class MortgageController {
 		//			after it's returned back from the server, the payment (dPayment)
 		//			should be calculated.
 		//			Display dPayment on the form, rounded to two decimal places
+		
+	}
+
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
 		
 	}
 }

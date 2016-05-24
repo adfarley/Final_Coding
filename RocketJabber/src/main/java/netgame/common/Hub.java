@@ -548,5 +548,11 @@ public class Hub {
         
     }  // end nested class ConnectionToClient
 
+
+	protected void messageReceived(int ClientID, Object message, int GivenCreditScore) {
+		// TODO Auto-generated method stub
+		
+	}
+
     
 }
