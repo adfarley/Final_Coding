@@ -5,8 +5,11 @@ import java.util.ResourceBundle;
 
 import eNums.eAction;
 import javafx.event.ActionEvent;
+import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -27,8 +30,11 @@ public class MortgageController implements Initializable {
 	private TextField txtIncome;
 	@FXML
 	private TextField txtHouseCost;
+
 	@FXML
 	private ComboBox cmbTerm;
+	@FXML
+	private Button btnCalculatePayment;
 	@FXML
 	private Label lblMortgagePayment;
 	@FXML
@@ -73,11 +79,11 @@ public class MortgageController implements Initializable {
 		//			set the loan request details...  rate, term, amount, credit score, downpayment
 		//			I've created you an instance of lq...  execute the setters in lq
 
-		lq.setdRate(dRate);
-		lq.setiTerm(Double.parseDouble(cmbTerm));
-		lq.setdAmount(Double.parseDouble(txtHouseCost));
-		lq.setiCreditScore(Double.parseDouble(txtCreditScore));
-		lq.setiDownPayment(iDownPayment);
+		//lq.setdRate(dRate);
+		//lq.setiTerm(Integer.parseInt(cmbTerm.getAccessibleText()));
+		lq.setdAmount(Double.parseDouble(txtHouseCost.getText()));
+		lq.setiCreditScore(Integer.parseInt(txtCreditScore.getText()));
+		//lq.setiDownPayment(iDownPayment);
 		a.setLoanRequest(lq);
 		
 		//	send lq as a message to RocketHub		
